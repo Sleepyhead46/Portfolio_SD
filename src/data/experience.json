@@ -1,0 +1,27 @@
+[
+  {
+    "id": "quickfox",
+    "company": "QuickFox Consulting",
+    "role": "Data Analyst",
+    "location": "Kupondole, Lalitpur",
+    "duration": "August 2025 – January 2026",
+    "type": "Internship",
+    "summary": "Delivered end-to-end data solutions including RPA automation, web scraping pipelines, and interactive dashboards for international clients.",
+    "responsibilities": [
+      "Built RPA solutions using Selenium",
+      "Automated data entry workflows",
+      "Developed web scraping pipelines",
+      "Analyzed more than 20 construction datasets",
+      "Built Power BI dashboards",
+      "Improved project tracking by 40%",
+      "Reduced reporting time by 30%",
+      "Automated Power Query workflows",
+      "Worked with international clients"
+    ],
+    "highlights": [
+      { "label": "Tracking", "value": "+40%" },
+      { "label": "Reporting Time", "value": "-30%" },
+      { "label": "Datasets", "value": "20+" }
+    ]
+  }
+]

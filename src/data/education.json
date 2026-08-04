@@ -1,0 +1,16 @@
+[
+  {
+    "id": "bachelor",
+    "degree": "Bachelor of Computer Engineering",
+    "institution": "ACEM, Kathmandu, Nepal",
+    "percentage": "68%",
+    "period": "Ongoing",
+    "description": "Focused on computer engineering fundamentals with emphasis on data structures, algorithms, and software engineering.",
+    "highlights": [
+      "Computer Engineering",
+      "Data Structures & Algorithms",
+      "Software Engineering",
+      "Database Systems"
+    ]
+  }
+]

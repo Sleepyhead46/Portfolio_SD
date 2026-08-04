@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://samyakdeshar.vercel.app
+
+# Sitemaps
+Sitemap: https://samyakdeshar.vercel.app/sitemap.xml

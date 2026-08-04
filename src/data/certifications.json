@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ibm-data-analyst",
+    "title": "IBM Data Analyst Professional Certificate",
+    "issuer": "Coursera",
+    "year": "2024",
+    "icon": "certificate",
+    "color": "#D9D9D9",
+    "description": "Comprehensive professional certification covering data analysis, SQL, Python, and BI dashboards."
+  },
+  {
+    "id": "mindrisers-data-science",
+    "title": "Data Science Certification",
+    "issuer": "MindRisers",
+    "year": "2024",
+    "icon": "award",
+    "color": "#A0A0A0",
+    "description": "Hands-on data science program covering machine learning, statistics, and real-world data projects."
+  }
+]
