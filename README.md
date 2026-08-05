@@ -147,4 +147,4 @@ Supported hosting platforms:
 
 © 2026 Samyak Deshar
 
-Built with Next.js, TypeScript, and a passion for data, machine learning, and software development.
+Built with Next.js, TypeScript, and a passion for data.
