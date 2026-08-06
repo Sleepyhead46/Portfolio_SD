@@ -6,22 +6,18 @@
     "location": "Kupondole, Lalitpur",
     "duration": "August 2025 – January 2026",
     "type": "Internship",
-    "summary": "Delivered end-to-end data solutions including RPA automation, web scraping pipelines, and interactive dashboards for international clients.",
+    "summary": "Architected and deployed automated data pipelines, RPA scrapers, and interactive Power BI dashboards — streamlining project tracking across 20+ global construction datasets and cutting client reporting times by 30%.",
     "responsibilities": [
-      "Built RPA solutions using Selenium",
-      "Automated data entry workflows",
-      "Developed web scraping pipelines",
-      "Analyzed more than 20 construction datasets",
-      "Built Power BI dashboards",
-      "Improved project tracking by 40%",
-      "Reduced reporting time by 30%",
-      "Automated Power Query workflows",
-      "Worked with international clients"
+      "Engineered automated RPA bots using Selenium to replace manual data entry, boosting project tracking efficiency by 40%.",
+      "Designed robust web scraping pipelines to harvest, clean, and structure real-world data across 20+ international construction datasets.",
+      "Built interactive executive Power BI dashboards with custom DAX modeling, empowering client stakeholders with real-time visual insights.",
+      "Streamlined complex ETL processes via automated Power Query workflows, cutting recurring report generation times by 30%.",
+      "Collaborated directly with international client teams to turn raw business requirements into production-ready data solutions."
     ],
     "highlights": [
-      { "label": "Tracking", "value": "+40%" },
-      { "label": "Reporting Time", "value": "-30%" },
-      { "label": "Datasets", "value": "20+" }
+      { "label": "Workflow Efficiency", "value": "+40%" },
+      { "label": "Report Time Saved", "value": "-30%" },
+      { "label": "Global Datasets", "value": "20+" }
     ]
   }
 ]

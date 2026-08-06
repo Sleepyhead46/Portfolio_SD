@@ -17,7 +17,7 @@ export function Experience() {
         <SectionHeading
           eyebrow="Career"
           title="Professional Experience"
-          description="Real-world impact delivered through data automation, analytics, and intelligent dashboards."
+          description="Proven track record of turning raw data into automated workflows, actionable analytics, and measurable impact."
         />
 
         <div className="relative border-l border-white/10 pl-8">

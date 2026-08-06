@@ -50,7 +50,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="Portfolio"
           title="Featured Projects"
-          description="End-to-end data and machine learning solutions built with real-world impact."
+          description="Real projects I've built to solve actual problems — using machine learning, data visualization, and smart automation."
         />
 
         {/* Relative wrapper for side navigation buttons */}
