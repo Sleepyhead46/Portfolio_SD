@@ -5,7 +5,7 @@
     "role": "Data Analyst",
     "location": "Kupondole, Lalitpur",
     "duration": "August 2025 – January 2026",
-    "type": "Internship",
+    "type": " ",
     "summary": "Architected and deployed automated data pipelines, RPA scrapers, and interactive Power BI dashboards — streamlining project tracking across 20+ global construction datasets and cutting client reporting times by 30%.",
     "responsibilities": [
       "Engineered automated RPA bots using Selenium to replace manual data entry, boosting project tracking efficiency by 40%.",
@@ -15,9 +15,18 @@
       "Collaborated directly with international client teams to turn raw business requirements into production-ready data solutions."
     ],
     "highlights": [
-      { "label": "Workflow Efficiency", "value": "+40%" },
-      { "label": "Report Time Saved", "value": "-30%" },
-      { "label": "Global Datasets", "value": "20+" }
+      {
+        "label": "Workflow Efficiency",
+        "value": "+40%"
+      },
+      {
+        "label": "Report Time Saved",
+        "value": "-30%"
+      },
+      {
+        "label": "Global Datasets",
+        "value": "20+"
+      }
     ]
   }
 ]
