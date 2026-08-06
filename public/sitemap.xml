@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://samyakdeshar.vercel.app</loc><lastmod>2026-08-06T08:38:11.949Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://samyakdeshar.vercel.app/icon</loc><lastmod>2026-08-06T08:38:11.951Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://samyakdeshar.vercel.app/manifest.webmanifest</loc><lastmod>2026-08-06T08:38:11.951Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://samyakdeshar.vercel.app/robots.txt</loc><lastmod>2026-08-06T08:38:11.951Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://samyakdeshar.vercel.app/sitemap.xml</loc><lastmod>2026-08-06T08:38:11.951Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://samyakdeshar.vercel.app</loc><lastmod>2026-08-06T09:09:43.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://samyakdeshar.vercel.app/icon</loc><lastmod>2026-08-06T09:09:43.511Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://samyakdeshar.vercel.app/manifest.webmanifest</loc><lastmod>2026-08-06T09:09:43.511Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://samyakdeshar.vercel.app/robots.txt</loc><lastmod>2026-08-06T09:09:43.511Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://samyakdeshar.vercel.app/sitemap.xml</loc><lastmod>2026-08-06T09:09:43.511Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

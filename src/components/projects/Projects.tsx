@@ -6,6 +6,15 @@ import { TiltCard } from "@/components/shared/TiltCard";
 import { Reveal } from "@/components/shared/Reveal";
 import projects from "@/data/projects.json";
 
+interface SubProject {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  github: string;
+}
+
 interface Project {
   id: string;
   title: string;
@@ -17,6 +26,8 @@ interface Project {
   demo: string;
   features: string[];
   featured: boolean;
+  grouped?: boolean;
+  subProjects?: SubProject[];
 }
 
 export function Projects() {
@@ -30,86 +41,166 @@ export function Projects() {
         />
 
         <div className="grid gap-8 md:grid-cols-2">
-          {projects.map((project: Project, i) => (
-            <Reveal key={project.id} delay={i * 0.1}>
-              <TiltCard className="h-full">
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-card/60 backdrop-blur-md">
-                  {/* Animated border */}
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    <div className="absolute inset-0 rounded-2xl border border-white/20" />
-                  </div>
+          {(projects as Project[]).map((project, i) =>
+            project.grouped && project.subProjects ? (
+              /* ── Grouped card – same outer shell as standard cards ── */
+              <Reveal key={project.id} delay={i * 0.1}>
+                <TiltCard className="h-full">
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-card/60 backdrop-blur-md">
+                    {/* Hover border */}
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      <div className="absolute inset-0 rounded-2xl border border-white/20" />
+                    </div>
 
-                  {/* Image */}
-                  <div className="relative h-52 overflow-hidden border-b border-white/8">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                    {project.featured && (
-                      <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                        Featured
-                      </span>
-                    )}
-                  </div>
+                    {/* Single shared image – identical to standard cards */}
+                    <div className="relative h-52 overflow-hidden border-b border-white/8">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                    </div>
 
-                  {/* Content */}
-                  <div className="flex flex-1 flex-col p-6 md:p-8">
-                    <div className="mb-3 flex items-start justify-between gap-4">
-                      <div>
+                    {/* Content */}
+                    <div className="flex flex-1 flex-col p-6 md:p-8">
+                      {/* Card header */}
+                      <div className="mb-5">
                         <h3 className="font-display text-xl font-semibold text-white md:text-2xl">
                           {project.title}
                         </h3>
                         <p className="mt-1 text-sm text-accent">{project.tagline}</p>
                       </div>
+
+                      {/* Sub-project entries */}
+                      <div className="flex flex-col gap-5">
+                        {project.subProjects.map((sub, si) => (
+                          <div
+                            key={sub.id}
+                            className={
+                              si < project.subProjects!.length - 1
+                                ? "border-b border-white/8 pb-5"
+                                : ""
+                            }
+                          >
+                            <h4 className="mb-1.5 text-sm font-semibold text-white">
+                              {sub.title}
+                            </h4>
+                            <p className="mb-3 text-xs leading-relaxed text-secondary">
+                              {sub.description}
+                            </p>
+
+                            {/* Tech pills */}
+                            <div className="mb-3 flex flex-wrap gap-2">
+                              {sub.tech.map((t) => (
+                                <span
+                                  key={t}
+                                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-accent"
+                                >
+                                  {t}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* GitHub */}
+                            <a
+                              href={sub.github}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex h-9 items-center gap-2 rounded-full border border-white/15 px-4 text-xs text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                            >
+                              <Github className="h-3.5 w-3.5" />
+                              GitHub
+                            </a>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                </TiltCard>
+              </Reveal>
+            ) : (
+              /* ── Standard project card ── */
+              <Reveal key={project.id} delay={i * 0.1}>
+                <TiltCard className="h-full">
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-card/60 backdrop-blur-md">
+                    {/* Animated border */}
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      <div className="absolute inset-0 rounded-2xl border border-white/20" />
                     </div>
 
-                    <p className="mb-5 text-sm leading-relaxed text-secondary">
-                      {project.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="mb-6 flex flex-wrap gap-2">
-                      {project.features.map((f) => (
-                        <span
-                          key={f}
-                          className="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs text-secondary"
-                        >
-                          {f}
+                    {/* Image */}
+                    <div className="relative h-52 overflow-hidden border-b border-white/8">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                      {project.featured && (
+                        <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                          Featured
                         </span>
-                      ))}
+                      )}
                     </div>
 
-                    {/* Tech */}
-                    <div className="mb-6 flex flex-wrap gap-2">
-                      {project.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-accent"
+                    {/* Content */}
+                    <div className="flex flex-1 flex-col p-6 md:p-8">
+                      <div className="mb-3 flex items-start justify-between gap-4">
+                        <div>
+                          <h3 className="font-display text-xl font-semibold text-white md:text-2xl">
+                            {project.title}
+                          </h3>
+                          <p className="mt-1 text-sm text-accent">{project.tagline}</p>
+                        </div>
+                      </div>
+
+                      <p className="mb-5 text-sm leading-relaxed text-secondary">
+                        {project.description}
+                      </p>
+
+                      {/* Features */}
+                      <div className="mb-6 flex flex-wrap gap-2">
+                        {project.features.map((f) => (
+                          <span
+                            key={f}
+                            className="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs text-secondary"
+                          >
+                            {f}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Tech */}
+                      <div className="mb-6 flex flex-wrap gap-2">
+                        {project.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-accent"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Actions */}
+                      <div className="mt-auto flex items-center gap-3">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex h-10 items-center gap-2 rounded-full border border-white/15 px-4 text-sm text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
                         >
-                          {t}
-                        </span>
-                      ))}
+                          <Github className="h-4 w-4" />
+                          GitHub
+                        </a>
+                      </div>
                     </div>
-
-                    {/* Actions */}
-                    <div className="mt-auto flex items-center gap-3">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex h-10 items-center gap-2 rounded-full border border-white/15 px-4 text-sm text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-                      >
-                        <Github className="h-4 w-4" />
-                        GitHub
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              </TiltCard>
-            </Reveal>
-          ))}
+                  </article>
+                </TiltCard>
+              </Reveal>
+            )
+          )}
         </div>
       </div>
     </section>

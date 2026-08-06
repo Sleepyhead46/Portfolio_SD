@@ -55,5 +55,36 @@
       "Chat history and logging"
     ],
     "featured": true
+  },
+  {
+    "id": "powerbi-dashboards",
+    "title": "Power BI Dashboards",
+    "tagline": "Business Intelligence & Data Visualization",
+    "description": "",
+    "image": "/projects/powerbi-dashboards.svg",
+    "tech": ["Power BI", "DAX", "Data Modeling", "ETL"],
+    "github": "",
+    "demo": "#",
+    "features": [],
+    "featured": false,
+    "grouped": true,
+    "subProjects": [
+      {
+        "id": "powerbi-mobile",
+        "title": "Mobile Phone Sales Dashboard",
+        "description": "Interactive Power BI dashboard tracking mobile phone sales across regions, brands, and time periods — with KPIs for revenue, units sold, and market trends.",
+        "image": "/projects/powerbi-mobile.svg",
+        "tech": ["Power BI", "DAX", "Data Modeling"],
+        "github": "https://github.com/Sleepyhead46/Mobile-phone-sales-powerbi-dashboard.git"
+      },
+      {
+        "id": "powerbi-credit",
+        "title": "Credit Card Analysis Dashboard",
+        "description": "Comprehensive Power BI report analysing credit card transactions, spending categories, default rates, and customer revenue to surface actionable financial insights.",
+        "image": "/projects/powerbi-credit.svg",
+        "tech": ["Power BI", "DAX", "ETL", "Financial Analytics"],
+        "github": "https://github.com/Sleepyhead46/Credit-Card-Power-Bi-analysis.git"
+      }
+    ]
   }
 ]

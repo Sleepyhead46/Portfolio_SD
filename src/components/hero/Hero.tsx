@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Mail, ChevronDown, Phone } from "lucide-react";
+import { ArrowRight, Download, Mail, Phone } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { ParticleField } from "@/components/particles/ParticleField";
 import { GridPattern } from "@/components/shared/GridPattern";
@@ -49,7 +49,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-screen items-center justify-center overflow-hidden"
+      className="relative flex h-screen items-center justify-center"
     >
       {/* Background layers */}
       <div className="absolute inset-0 bg-gradient-radial opacity-60" />
@@ -172,22 +172,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3.2 }}
-        onClick={() => scrollTo("about")}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-secondary transition-colors hover:text-white"
-        aria-label="Scroll down"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="h-6 w-6" />
-        </motion.div>
-      </motion.button>
+
     </section>
   );
 }
