@@ -36,22 +36,16 @@ export function Education() {
                 </div>
 
                 <div className="group rounded-2xl border border-white/8 bg-card/60 p-6 backdrop-blur-md transition-all duration-500 hover:border-white/20 hover:bg-card md:p-8">
-                  <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                  <div className="mb-4">
                     <h3 className="font-display text-xl font-semibold text-white md:text-2xl">
                       {item.degree}
                     </h3>
-                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-accent">
-                      {item.percentage}
-                    </span>
                   </div>
 
                   <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-secondary">
                     <span className="inline-flex items-center gap-1.5">
-                      {item.institution}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
                       <MapPin className="h-4 w-4" />
-                      {item.period}
+                      {item.institution}
                     </span>
                   </div>
 

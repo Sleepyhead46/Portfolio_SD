@@ -97,11 +97,6 @@ export function Skills() {
                     <span className="text-sm font-medium text-white">
                       {skill.name}
                     </span>
-                    <span className="flex items-center gap-2">
-                      <span className="font-mono text-xs text-accent">
-                        {skill.level}%
-                      </span>
-                    </span>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-white/5">
                     <motion.div
@@ -121,9 +116,7 @@ export function Skills() {
             ))}
           </motion.div>
         </AnimatePresence>
-
       </div>
     </section>
   );
 }
-

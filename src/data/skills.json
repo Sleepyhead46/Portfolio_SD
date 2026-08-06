@@ -1,43 +1,106 @@
 {
   "programming": {
-    "label": "Programming",
+    "label": "Programming & Tools",
     "icon": "code",
     "skills": [
-      { "name": "Python", "level": 95 },
-      { "name": "SQL", "level": 85 },
-      { "name": "n8n", "level": 80 },
-      { "name": "R Programming", "level": 78 }
+      {
+        "name": "Python",
+        "level": 95
+      },
+      {
+        "name": "SQL",
+        "level": 85
+      },
+      {
+        "name": "Git & GitHub",
+        "level": 88
+      },
+      {
+        "name": "C",
+        "level": 82
+      },
+      {
+        "name": "C++",
+        "level": 85
+      },
+      {
+        "name": "n8n",
+        "level": 80
+      },
+      {
+        "name": "R Programming",
+        "level": 78
+      }
     ]
   },
   "machineLearning": {
     "label": "Machine Learning",
     "icon": "brain",
     "skills": [
-      { "name": "scikit-learn", "level": 90 },
-      { "name": "TensorFlow", "level": 85 },
-      { "name": "CNN", "level": 82 },
-      { "name": "Random Forest", "level": 88 },
-      { "name": "NLP", "level": 84 }
+      {
+        "name": "scikit-learn",
+        "level": 90
+      },
+      {
+        "name": "TensorFlow",
+        "level": 85
+      },
+      {
+        "name": "CNN",
+        "level": 82
+      },
+      {
+        "name": "Random Forest",
+        "level": 88
+      },
+      {
+        "name": "NLP",
+        "level": 84
+      }
     ]
   },
   "visualization": {
     "label": "Visualization",
     "icon": "chart",
     "skills": [
-      { "name": "Power BI", "level": 92 },
-      { "name": "Tableau", "level": 80 },
-      { "name": "Matplotlib", "level": 88 },
-      { "name": "Seaborn", "level": 86 }
+      {
+        "name": "Power BI",
+        "level": 92
+      },
+      {
+        "name": "Tableau",
+        "level": 80
+      },
+      {
+        "name": "Matplotlib",
+        "level": 88
+      },
+      {
+        "name": "Seaborn",
+        "level": 86
+      }
     ]
   },
   "dataScience": {
     "label": "Data Science",
     "icon": "database",
     "skills": [
-      { "name": "EDA", "level": 93 },
-      { "name": "Data Cleaning", "level": 91 },
-      { "name": "Feature Engineering", "level": 87 },
-      { "name": "Model Evaluation", "level": 89 }
+      {
+        "name": "EDA",
+        "level": 93
+      },
+      {
+        "name": "Data Cleaning",
+        "level": 91
+      },
+      {
+        "name": "Feature Engineering",
+        "level": 87
+      },
+      {
+        "name": "Model Evaluation",
+        "level": 89
+      }
     ]
   }
 }
