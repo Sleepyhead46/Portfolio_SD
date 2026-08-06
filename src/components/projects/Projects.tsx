@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Sparkles } from "lucide-react";
+import { Github } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { TiltCard } from "@/components/shared/TiltCard";
 import { Reveal } from "@/components/shared/Reveal";
@@ -41,11 +41,12 @@ export function Projects() {
 
                   {/* Image */}
                   <div className="relative h-52 overflow-hidden border-b border-white/8">
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-elevated to-card">
-                      <div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                        <Sparkles className="h-10 w-10 text-accent" />
-                      </div>
-                    </div>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                     {project.featured && (
                       <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
                         Featured

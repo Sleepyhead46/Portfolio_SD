@@ -49,7 +49,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      className="relative flex h-screen items-center justify-center overflow-hidden"
     >
       {/* Background layers */}
       <div className="absolute inset-0 bg-gradient-radial opacity-60" />
@@ -69,7 +69,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-20 text-center lg:px-8">
         <motion.div
           initial="hidden"
           animate="visible"

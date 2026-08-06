@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Code,
-  Brain,
-  BarChart3,
-  Database,
-  Plus,
-  X,
-  Check,
-} from "lucide-react";
+import { Code, Brain, BarChart3, Database } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 import rawSkillsData from "@/data/skills.json";
@@ -49,23 +41,8 @@ const CATEGORY_KEYS: CategoryKey[] = [
 
 export function Skills() {
   const [active, setActive] = useState<CategoryKey>("programming");
-  const [customSkills, setCustomSkills] = useState<Skill[]>([]);
-  const [newSkill, setNewSkill] = useState("");
-  const [showAdd, setShowAdd] = useState(false);
 
-  const activeSkills = [...skillsData[active].skills, ...customSkills];
-
-  const addSkill = () => {
-    const name = newSkill.trim();
-    if (!name) return;
-    setCustomSkills((prev) => [...prev, { name, level: 75 }]);
-    setNewSkill("");
-    setShowAdd(false);
-  };
-
-  const removeSkill = (name: string) => {
-    setCustomSkills((prev) => prev.filter((s) => s.name !== name));
-  };
+  const activeSkills = skillsData[active].skills;
 
   return (
     <section id="skills" className="relative px-6 py-32 lg:px-8">
@@ -121,15 +98,6 @@ export function Skills() {
                       {skill.name}
                     </span>
                     <span className="flex items-center gap-2">
-                      {customSkills.some((s) => s.name === skill.name) && (
-                        <button
-                          onClick={() => removeSkill(skill.name)}
-                          className="rounded-full p-1 text-secondary transition-colors hover:text-red-400"
-                          aria-label={`Remove ${skill.name}`}
-                        >
-                          <X className="h-3.5 w-3.5" />
-                        </button>
-                      )}
                       <span className="font-mono text-xs text-accent">
                         {skill.level}%
                       </span>
@@ -154,43 +122,6 @@ export function Skills() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Add skill */}
-        <div className="mt-10 flex justify-center">
-          {showAdd ? (
-            <div className="flex items-center gap-2 rounded-2xl border border-white/15 bg-card/60 p-2 backdrop-blur-md">
-              <input
-                value={newSkill}
-                onChange={(e) => setNewSkill(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && addSkill()}
-                placeholder="Add a skill…"
-                className="w-52 bg-transparent px-3 py-2 text-sm text-white placeholder:text-highlight focus:outline-none"
-                autoFocus
-              />
-              <button
-                onClick={addSkill}
-                className="rounded-xl bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-                aria-label="Add skill"
-              >
-                <Check className="h-4 w-4" />
-              </button>
-              <button
-                onClick={() => setShowAdd(false)}
-                className="rounded-xl bg-white/10 p-2 text-secondary transition-colors hover:bg-white/20"
-                aria-label="Cancel"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-          ) : (
-            <button
-              onClick={() => setShowAdd(true)}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-secondary transition-all duration-300 hover:border-white/30 hover:text-white"
-            >
-              <Plus className="h-4 w-4" />
-              Add Skill
-            </button>
-          )}
-        </div>
       </div>
     </section>
   );
