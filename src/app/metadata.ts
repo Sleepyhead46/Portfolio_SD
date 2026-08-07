@@ -130,7 +130,7 @@ export const jsonLd = {
   },
   alumniOf: {
     "@type": "EducationalOrganization",
-    name: "Itahari International College",
+    name: "Advanced College of Engineering and Management",
   },
   knowsAbout: [
     "Data Science",

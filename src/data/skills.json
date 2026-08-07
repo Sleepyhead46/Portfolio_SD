@@ -3,104 +3,74 @@
     "label": "Programming & Tools",
     "icon": "code",
     "skills": [
-      {
-        "name": "Python",
-        "level": 95
-      },
-      {
-        "name": "SQL",
-        "level": 85
-      },
-      {
-        "name": "Git & GitHub",
-        "level": 88
-      },
-      {
-        "name": "C",
-        "level": 82
-      },
-      {
-        "name": "C++",
-        "level": 85
-      },
-      {
-        "name": "n8n",
-        "level": 80
-      },
-      {
-        "name": "R Programming",
-        "level": 78
-      }
+      { "name": "Python", "level": 95 },
+      { "name": "SQL", "level": 85 },
+      { "name": "R Programming", "level": 78 },
+      { "name": "C", "level": 82 },
+      { "name": "C++", "level": 85 },
+      { "name": "Git & GitHub", "level": 88 },
+      { "name": "Bash / Shell", "level": 75 },
+      { "name": "FastAPI", "level": 78 },
+      { "name": "Docker", "level": 72 }
     ]
   },
   "machineLearning": {
-    "label": "Machine Learning",
+    "label": "Machine Learning & AI",
     "icon": "brain",
     "skills": [
-      {
-        "name": "scikit-learn",
-        "level": 90
-      },
-      {
-        "name": "TensorFlow",
-        "level": 85
-      },
-      {
-        "name": "CNN",
-        "level": 82
-      },
-      {
-        "name": "Random Forest",
-        "level": 88
-      },
-      {
-        "name": "NLP",
-        "level": 84
-      }
+      { "name": "scikit-learn", "level": 90 },
+      { "name": "TensorFlow", "level": 85 },
+      { "name": "PyTorch", "level": 80 },
+      { "name": "Keras", "level": 83 },
+      { "name": "CNN", "level": 82 },
+      { "name": "LSTM / RNN", "level": 78 },
+      { "name": "Random Forest", "level": 88 },
+      { "name": "XGBoost", "level": 86 },
+      { "name": "NLP", "level": 84 },
+      { "name": "Hugging Face", "level": 79 },
+      { "name": "Prompt Engineering", "level": 85 }
     ]
   },
   "visualization": {
-    "label": "Visualization",
+    "label": "Data Visualization",
     "icon": "chart",
     "skills": [
-      {
-        "name": "Power BI",
-        "level": 92
-      },
-      {
-        "name": "Tableau",
-        "level": 80
-      },
-      {
-        "name": "Matplotlib",
-        "level": 88
-      },
-      {
-        "name": "Seaborn",
-        "level": 86
-      }
+      { "name": "Power BI", "level": 92 },
+      { "name": "Tableau", "level": 80 },
+      { "name": "Matplotlib", "level": 88 },
+      { "name": "Seaborn", "level": 86 },
+      { "name": "Plotly", "level": 82 },
+      { "name": "Dash", "level": 76 },
+      { "name": "Streamlit", "level": 84 },
+      { "name": "Excel / Pivot", "level": 90 }
     ]
   },
   "dataScience": {
     "label": "Data Science",
     "icon": "database",
     "skills": [
-      {
-        "name": "EDA",
-        "level": 93
-      },
-      {
-        "name": "Data Cleaning",
-        "level": 91
-      },
-      {
-        "name": "Feature Engineering",
-        "level": 87
-      },
-      {
-        "name": "Model Evaluation",
-        "level": 89
-      }
+      { "name": "EDA", "level": 93 },
+      { "name": "Data Cleaning", "level": 91 },
+      { "name": "Feature Engineering", "level": 87 },
+      { "name": "Model Evaluation", "level": 89 },
+      { "name": "Statistics", "level": 85 },
+      { "name": "Hypothesis Testing", "level": 82 },
+      { "name": "Pandas", "level": 93 },
+      { "name": "NumPy", "level": 91 }
+    ]
+  },
+  "aiAutomation": {
+    "label": "AI Automation",
+    "icon": "bot",
+    "skills": [
+      { "name": "n8n", "level": 85 },
+      { "name": "LangChain", "level": 80 },
+      { "name": "LangGraph", "level": 74 },
+      { "name": "OpenAI API", "level": 88 },
+      { "name": "Gemini API", "level": 82 },
+      { "name": "RAG Pipelines", "level": 78 },
+      { "name": "Vector DBs", "level": 75 },
+      { "name": "AI Agents", "level": 80 }
     ]
   }
 }
