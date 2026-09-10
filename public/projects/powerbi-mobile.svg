@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0d0f14"/>
+
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
+  </g>
+
+  <!-- Phone Graphic Frame -->
+  <g transform="translate(140, 95)">
+    <rect x="0" y="0" width="150" height="260" rx="20" fill="#14171f" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <rect x="6" y="6" width="138" height="248" rx="16" fill="#0b0d12"/>
+    <rect x="52" y="14" width="46" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
+    
+    <!-- Mini KPI in phone -->
+    <rect x="16" y="30" width="118" height="40" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="24" y="46" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="9">Total Units</text>
+    <text x="24" y="62" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="700">142.8K</text>
+    
+    <!-- Mini chart in phone -->
+    <rect x="22" y="125" width="14" height="60" rx="2" fill="#525866"/>
+    <rect x="42" y="105" width="14" height="80" rx="2" fill="#71717a"/>
+    <rect x="62" y="90" width="14" height="95" rx="2" fill="#e4e4e7"/>
+    <rect x="82" y="115" width="14" height="70" rx="2" fill="#71717a"/>
+    <rect x="102" y="100" width="14" height="85" rx="2" fill="#525866"/>
+  </g>
+
+  <!-- Large Power BI Dashboard Panel -->
+  <g transform="translate(340, 85)">
+    <rect x="0" y="0" width="370" height="280" rx="12" fill="#14171f" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    
+    <text x="24" y="36" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Mobile Phone Sales Dashboard</text>
+    <text x="24" y="54" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="11">Power BI · DAX Star Schema · Regional Analytics</text>
+
+    <!-- KPI 1 -->
+    <rect x="24" y="72" width="95" height="50" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+    <text x="32" y="88" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Revenue</text>
+    <text x="32" y="108" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">$2.45M</text>
+
+    <!-- KPI 2 -->
+    <rect x="130" y="72" width="95" height="50" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+    <text x="138" y="88" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Avg Price</text>
+    <text x="138" y="108" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="700">$389</text>
+
+    <!-- KPI 3 -->
+    <rect x="236" y="72" width="105" height="50" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+    <text x="244" y="88" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">YoY Growth</text>
+    <text x="244" y="108" fill="#34d399" font-family="system-ui, sans-serif" font-size="15" font-weight="700">+24.6%</text>
+
+    <!-- Trend line -->
+    <path d="M 30 215 C 80 180, 120 225, 170 170 C 220 125, 270 185, 335 150" fill="none" stroke="#d4d4d8" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="335" cy="150" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+    <circle cx="170" cy="170" r="3" fill="#a1a1aa"/>
+
+    <!-- Bottom tags -->
+    <rect x="24" y="240" width="80" height="22" rx="4" fill="rgba(255,255,255,0.04)"/>
+    <text x="64" y="255" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Samsung</text>
+
+    <rect x="112" y="240" width="70" height="22" rx="4" fill="rgba(255,255,255,0.04)"/>
+    <text x="147" y="255" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Apple</text>
+
+    <rect x="190" y="240" width="75" height="22" rx="4" fill="rgba(255,255,255,0.04)"/>
+    <text x="227" y="255" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Xiaomi</text>
+  </g>
+</svg>

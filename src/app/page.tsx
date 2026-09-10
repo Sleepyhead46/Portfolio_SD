@@ -34,7 +34,7 @@ export default function Home() {
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <Navbar onCommand={() => setCommandOpen(true)} />
       <CommandPalette open={commandOpen} onClose={() => setCommandOpen(false)} />
-      <main>
+      <main className="relative overflow-x-clip">
         <Hero />
         <About />
         <Education />

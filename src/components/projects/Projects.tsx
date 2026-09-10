@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef } from "react";
-import { Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, ChevronRight, X, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { TiltCard } from "@/components/shared/TiltCard";
-import { Reveal } from "@/components/shared/Reveal";
-import projects from "@/data/projects.json";
+import rawProjects from "@/data/projects.json";
 
 interface SubProject {
   id: string;
@@ -21,228 +21,319 @@ interface Project {
   title: string;
   tagline: string;
   description: string;
+  category: string;
+  categoryLabel: string;
   image: string;
   tech: string[];
   github: string;
-  demo: string;
+  demo?: string;
   features: string[];
   featured: boolean;
   grouped?: boolean;
   subProjects?: SubProject[];
 }
 
-export function Projects() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+const projects = rawProjects as Project[];
 
-  const handleScroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = 420;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
+const CATEGORIES = [
+  { id: "all", label: "All Projects" },
+  { id: "machine-learning", label: "Machine Learning & AI" },
+  { id: "ai-agents", label: "AI Agents" },
+  { id: "business-intelligence", label: "Power BI & Analytics" },
+];
+
+export function Projects() {
+  const [activeTab, setActiveTab] = useState("all");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const filteredProjects =
+    activeTab === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeTab);
 
   return (
-    <section id="projects" className="relative px-6 py-32 lg:px-8">
+    <section id="projects" className="relative px-4 py-28 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          eyebrow="Portfolio"
-          title="Featured Projects"
-          description="Real projects I've built to solve actual problems — using machine learning, data visualization, and smart automation."
+          eyebrow="Projects"
+          title="Featured Work"
+          description="A selection of machine learning architectures, predictive systems, and executive business analytics dashboards."
         />
 
-        {/* Relative wrapper for side navigation buttons */}
-        <div className="relative mt-12">
-          {/* Left floating side button */}
-          <button
-            onClick={() => handleScroll("left")}
-            className="absolute -left-3 sm:-left-6 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/70 text-white backdrop-blur-md shadow-xl transition-all duration-300 hover:border-white/50 hover:bg-black/90 hover:scale-110 active:scale-95"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
+        {/* Category Filter Tabs */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-1.5">
+          {CATEGORIES.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative rounded-lg px-3.5 py-1.5 text-xs sm:text-sm font-medium transition-all duration-200 ${
+                activeTab === tab.id
+                  ? "bg-white/10 text-white font-semibold"
+                  : "text-secondary hover:text-white hover:bg-white/5"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-          {/* Right floating side button */}
-          <button
-            onClick={() => handleScroll("right")}
-            className="absolute -right-3 sm:-right-6 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/70 text-white backdrop-blur-md shadow-xl transition-all duration-300 hover:border-white/50 hover:bg-black/90 hover:scale-110 active:scale-95"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
+        {/* Responsive Grid of Project Cards */}
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {filteredProjects.map((project, i) => (
+            <div key={project.id} className="flex flex-col">
+              <TiltCard className="flex flex-1 flex-col">
+                <article className="group relative flex flex-1 flex-col overflow-hidden rounded-xl border border-white/8 bg-card transition-all duration-200 hover:border-white/20 hover:bg-[#16181f]">
+                  {/* Image Banner */}
+                  <div className="relative h-52 w-full overflow-hidden border-b border-white/8 bg-black/40">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
 
-          {/* Horizontal scroll container - all projects in one row */}
-          <div
-            ref={scrollRef}
-            className="flex items-stretch gap-6 overflow-x-auto pb-6 pt-2 scrollbar-none snap-x snap-mandatory scroll-smooth px-2"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {(projects as Project[]).map((project, i) =>
-              project.grouped && project.subProjects ? (
-                /* ── Grouped card ── */
-                <div
-                  key={project.id}
-                  className="w-[85vw] sm:w-[380px] md:w-[420px] shrink-0 snap-start flex flex-col"
-                >
-                  <Reveal delay={i * 0.1} className="h-full flex flex-col flex-1">
-                    <TiltCard className="h-full flex flex-col flex-1">
-                      <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-card/60 backdrop-blur-md">
-                        <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                          <div className="absolute inset-0 rounded-2xl border border-white/20" />
-                        </div>
+                    {/* Category & Featured Badge */}
+                    <div className="absolute left-3.5 top-3.5 flex flex-wrap gap-1.5">
+                      {project.featured && (
+                        <span className="inline-flex items-center gap-1 rounded-md border border-white/15 bg-black/70 px-2 py-0.5 text-[11px] font-medium text-white backdrop-blur-sm">
+                          <Sparkles className="h-3 w-3 text-zinc-300" />
+                          Featured
+                        </span>
+                      )}
+                      <span className="rounded-md border border-white/10 bg-black/60 px-2 py-0.5 text-[11px] font-medium text-zinc-300 backdrop-blur-sm">
+                        {project.categoryLabel}
+                      </span>
+                    </div>
+                  </div>
 
-                        <div className="relative h-52 overflow-hidden border-b border-white/8 shrink-0">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                        </div>
+                  {/* Card Content */}
+                  <div className="flex flex-1 flex-col justify-between p-6">
+                    <div>
+                      <h3 className="font-display text-xl font-bold text-white transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="mt-0.5 text-xs text-secondary">
+                        {project.tagline}
+                      </p>
 
-                        <div className="flex flex-1 flex-col justify-between p-6 md:p-8">
-                          <div>
-                            <div className="mb-5">
-                              <h3 className="font-display text-xl font-semibold text-white md:text-2xl">
-                                {project.title}
-                              </h3>
-                              <p className="mt-1 text-sm text-accent">{project.tagline}</p>
-                            </div>
+                      <p className="mt-3 text-xs sm:text-sm leading-relaxed text-zinc-300">
+                        {project.description}
+                      </p>
 
-                            <div className="flex flex-col gap-5">
-                              {project.subProjects.map((sub, si) => (
-                                <div
-                                  key={sub.id}
-                                  className={
-                                    si < project.subProjects!.length - 1
-                                      ? "border-b border-white/8 pb-5"
-                                      : ""
-                                  }
-                                >
-                                  <h4 className="mb-1.5 text-sm font-semibold text-white">
-                                    {sub.title}
-                                  </h4>
-                                  <p className="mb-3 text-xs leading-relaxed text-secondary">
-                                    {sub.description}
-                                  </p>
-
-                                  <div className="mb-3 flex flex-wrap gap-2">
-                                    {sub.tech.map((t) => (
-                                      <span
-                                        key={t}
-                                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-accent"
-                                      >
-                                        {t}
-                                      </span>
-                                    ))}
-                                  </div>
-
-                                  <a
-                                    href={sub.github}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex h-9 items-center gap-2 rounded-full border border-white/15 px-4 text-xs text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-                                  >
-                                    <Github className="h-3.5 w-3.5" />
-                                    GitHub
-                                  </a>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </article>
-                    </TiltCard>
-                  </Reveal>
-                </div>
-              ) : (
-                /* ── Standard project card ── */
-                <div
-                  key={project.id}
-                  className="w-[85vw] sm:w-[380px] md:w-[420px] shrink-0 snap-start flex flex-col"
-                >
-                  <Reveal delay={i * 0.1} className="h-full flex flex-col flex-1">
-                    <TiltCard className="h-full flex flex-col flex-1">
-                      <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-card/60 backdrop-blur-md">
-                        <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                          <div className="absolute inset-0 rounded-2xl border border-white/20" />
-                        </div>
-
-                        <div className="relative h-52 overflow-hidden border-b border-white/8 shrink-0">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                          {project.featured && (
-                            <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                              Featured
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex flex-1 flex-col justify-between p-6 md:p-8">
-                          <div>
-                            <div className="mb-3 flex items-start justify-between gap-4">
-                              <div>
-                                <h3 className="font-display text-xl font-semibold text-white md:text-2xl">
-                                  {project.title}
-                                </h3>
-                                <p className="mt-1 text-sm text-accent">{project.tagline}</p>
-                              </div>
-                            </div>
-
-                            <p className="mb-5 text-sm leading-relaxed text-secondary">
-                              {project.description}
-                            </p>
-
-                            <div className="mb-6 flex flex-wrap gap-2">
-                              {project.features.map((f) => (
-                                <span
-                                  key={f}
-                                  className="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs text-secondary"
-                                >
-                                  {f}
-                                </span>
-                              ))}
-                            </div>
-
-                            <div className="mb-6 flex flex-wrap gap-2">
-                              {project.tech.map((t) => (
-                                <span
-                                  key={t}
-                                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-accent"
-                                >
-                                  {t}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="mt-auto pt-4 flex items-center gap-3">
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex h-10 items-center gap-2 rounded-full border border-white/15 px-4 text-sm text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                      {/* Highlight metrics */}
+                      {project.features.length > 0 && (
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {project.features.slice(0, 3).map((f) => (
+                            <span
+                              key={f}
+                              className="rounded border border-white/6 bg-white/[0.02] px-2 py-0.5 text-[11px] text-zinc-400"
                             >
-                              <Github className="h-4 w-4" />
-                              GitHub
-                            </a>
-                          </div>
+                              {f}
+                            </span>
+                          ))}
                         </div>
-                      </article>
-                    </TiltCard>
-                  </Reveal>
-                </div>
-              )
-            )}
-          </div>
+                      )}
+
+                      {/* Tech stack */}
+                      <div className="mt-4 flex flex-wrap gap-1.5">
+                        {project.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="rounded border border-white/8 bg-white/[0.04] px-2 py-0.5 text-[11px] font-medium text-zinc-300"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Card Actions */}
+                    <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-4">
+                      {project.github ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.02] px-3 text-xs font-medium text-zinc-300 transition-colors hover:border-white/25 hover:text-white hover:bg-white/5"
+                        >
+                          <Github className="h-3.5 w-3.5" />
+                          <span>Code</span>
+                        </a>
+                      ) : <div />}
+
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className="inline-flex h-8 items-center gap-1 rounded-lg border border-white/15 bg-white/5 px-3 text-xs font-medium text-white transition-all hover:bg-white/10 hover:border-white/30"
+                      >
+                        <span>{project.grouped ? "View Dashboards" : "Details"}</span>
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              </TiltCard>
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Project Details Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <div
+            className="fixed inset-0 z-[160] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-xl border border-white/12 bg-[#121419] p-6 sm:p-7 shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white"
+                aria-label="Close modal"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              {/* Header */}
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-secondary">
+                  {selectedProject.categoryLabel}
+                </span>
+                <h3 className="font-display text-2xl font-bold text-white">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-xs text-secondary">{selectedProject.tagline}</p>
+              </div>
+
+              {/* Image */}
+              <div className="mt-4 overflow-hidden rounded-lg border border-white/8 bg-black/40">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="h-48 w-full object-cover sm:h-56"
+                />
+              </div>
+
+              {/* Description */}
+              <p className="mt-4 text-xs sm:text-sm leading-relaxed text-zinc-300">
+                {selectedProject.description}
+              </p>
+
+              {/* Subprojects */}
+              {selectedProject.grouped && selectedProject.subProjects && (
+                <div className="mt-5 space-y-3">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-secondary">
+                    Included Dashboards
+                  </h4>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {selectedProject.subProjects.map((sub) => (
+                      <div
+                        key={sub.id}
+                        className="rounded-lg border border-white/8 bg-white/[0.02] p-3 flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="mb-2 h-20 overflow-hidden rounded border border-white/6 bg-black/40">
+                            <img
+                              src={sub.image}
+                              alt={sub.title}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                          <h5 className="font-semibold text-white text-xs sm:text-sm">
+                            {sub.title}
+                          </h5>
+                          <p className="mt-1 text-[11px] text-zinc-400 leading-relaxed">
+                            {sub.description}
+                          </p>
+                        </div>
+                        <div className="mt-3 pt-2 border-t border-white/6 flex items-center justify-between">
+                          <span className="text-[10px] text-zinc-400 font-mono">
+                            {sub.tech.join(" · ")}
+                          </span>
+                          <a
+                            href={sub.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1 text-xs text-white hover:underline font-medium"
+                          >
+                            <Github className="h-3 w-3" />
+                            GitHub
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Features list */}
+              {selectedProject.features.length > 0 && (
+                <div className="mt-5">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-secondary">
+                    Key Features
+                  </h4>
+                  <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
+                    {selectedProject.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-center gap-2 text-xs text-zinc-300"
+                      >
+                        <span className="h-1 w-1 rounded-full bg-zinc-400 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Tech Stack */}
+              <div className="mt-5">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-secondary">
+                  Tech Stack
+                </h4>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {selectedProject.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded border border-white/8 bg-white/5 px-2 py-0.5 text-xs text-zinc-300"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="mt-6 flex items-center justify-end gap-2.5 border-t border-white/8 pt-4">
+                {selectedProject.github && (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-4 text-xs font-medium text-white transition-colors hover:bg-white/10"
+                  >
+                    <Github className="h-3.5 w-3.5" />
+                    GitHub
+                  </a>
+                )}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="inline-flex h-9 items-center rounded-lg border border-white/10 px-4 text-xs font-medium text-zinc-300 hover:bg-white/5 hover:text-white"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

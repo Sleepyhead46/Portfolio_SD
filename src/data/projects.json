@@ -4,10 +4,12 @@
     "title": "CropAI",
     "tagline": "Crop Recommendation & Plant Disease Classification",
     "description": "An intelligent agricultural platform that recommends optimal crops and detects plant diseases in real time using machine learning and deep learning models.",
+    "category": "machine-learning",
+    "categoryLabel": "AI & Deep Learning",
     "image": "/projects/cropai.svg",
     "tech": ["Python", "Streamlit", "TensorFlow", "scikit-learn"],
     "github": "https://github.com/Sleepyhead46/CropAI-Crop-Recommendation-Plant-Disease-Classification-.git",
-    "demo": "#",
+    "demo": "https://github.com/Sleepyhead46/CropAI-Crop-Recommendation-Plant-Disease-Classification-",
     "features": [
       "Crop recommendation",
       "Disease classification",
@@ -18,32 +20,16 @@
     "featured": true
   },
   {
-    "id": "fake-news",
-    "title": "Fake News Detection",
-    "tagline": "NLP-Based Misinformation Classifier",
-    "description": "A machine learning application that detects fake news using natural language processing and TF-IDF vectorization with 95% accuracy.",
-    "image": "/projects/fake-news.svg",
-    "tech": ["Python", "Streamlit", "scikit-learn"],
-    "github": "https://github.com/Sleepyhead46/Fake-News-Detection.git",
-    "demo": "#",
-    "features": [
-      "NLP model",
-      "TF-IDF vectorization",
-      "95% accuracy",
-      "Word cloud",
-      "Confusion matrix"
-    ],
-    "featured": false
-  },
-  {
     "id": "nepse-ai",
     "title": "NEPSE AI Finance Agent",
     "tagline": "AI-Powered Multi-Agent Financial Assistant",
     "description": "An AI-powered multi-agent financial assistant for the Nepal Stock Exchange that provides real-time market analysis, stock insights, and sector intelligence.",
+    "category": "ai-agents",
+    "categoryLabel": "Multi-Agent AI",
     "image": "/projects/nepse-ai.svg",
     "tech": ["Python", "Streamlit", "Phi Agent Framework", "Groq", "SerpAPI", "NepalIPaisa API"],
     "github": "https://github.com/Sleepyhead46/NEPSE-AI-Finance-Agent",
-    "demo": "#",
+    "demo": "https://github.com/Sleepyhead46/NEPSE-AI-Finance-Agent",
     "features": [
       "Multi-agent collaboration",
       "Real-time market data",
@@ -57,16 +43,44 @@
     "featured": true
   },
   {
+    "id": "fake-news",
+    "title": "Fake News Detection",
+    "tagline": "NLP-Based Misinformation Classifier",
+    "description": "A machine learning application that detects fake news using natural language processing and TF-IDF vectorization with 95% accuracy.",
+    "category": "machine-learning",
+    "categoryLabel": "NLP & Text Mining",
+    "image": "/projects/fake-news.svg",
+    "tech": ["Python", "Streamlit", "scikit-learn", "NLTK"],
+    "github": "https://github.com/Sleepyhead46/Fake-News-Detection.git",
+    "demo": "https://github.com/Sleepyhead46/Fake-News-Detection",
+    "features": [
+      "NLP model",
+      "TF-IDF vectorization",
+      "95% accuracy",
+      "Word cloud",
+      "Confusion matrix"
+    ],
+    "featured": false
+  },
+  {
     "id": "powerbi-dashboards",
-    "title": "Power BI Dashboards",
+    "title": "Power BI Analytics Suite",
     "tagline": "Business Intelligence & Data Visualization",
-    "description": "",
+    "description": "Suite of executive business intelligence dashboards engineered with Microsoft Power BI, star-schema data modeling, automated ETL pipelines, and DAX KPIs.",
+    "category": "business-intelligence",
+    "categoryLabel": "Power BI & Analytics",
     "image": "/projects/powerbi-dashboards.svg",
-    "tech": ["Power BI", "DAX", "Data Modeling", "ETL"],
-    "github": "",
-    "demo": "#",
-    "features": [],
-    "featured": false,
+    "tech": ["Power BI", "DAX", "Data Modeling", "ETL", "SQL"],
+    "github": "https://github.com/Sleepyhead46/Mobile-phone-sales-powerbi-dashboard.git",
+    "demo": "https://github.com/Sleepyhead46/Mobile-phone-sales-powerbi-dashboard",
+    "features": [
+      "Executive KPI summary",
+      "Interactive time-series slicers",
+      "Star schema architecture",
+      "Automated Power Query ETL",
+      "Multi-region breakdowns"
+    ],
+    "featured": true,
     "grouped": true,
     "subProjects": [
       {

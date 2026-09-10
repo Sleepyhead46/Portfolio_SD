@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Code, Brain, BarChart3, Database, Bot } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -42,65 +43,93 @@ const CATEGORY_KEYS: CategoryKey[] = [
 ];
 
 export function Skills() {
+  const [selectedFilter, setSelectedFilter] = useState<string>("all");
+
+  const displayedCategories =
+    selectedFilter === "all"
+      ? CATEGORY_KEYS
+      : CATEGORY_KEYS.filter((k) => k === selectedFilter);
+
   return (
-    <section id="skills" className="relative px-6 py-32 lg:px-8">
+    <section id="skills" className="relative px-4 py-28 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Capabilities"
           title="Technical Skills"
-          description="All technologies and tools I work with — from data wrangling to production-ready AI systems."
+          description="Technologies, algorithmic libraries, and analytics frameworks I use to engineer robust data solutions."
         />
 
-        {/* All Technologies at a Glance */}
-        <Reveal delay={0.05}>
-          <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.2em] text-white/30">
-            All Technologies at a Glance
-          </p>
-        </Reveal>
+        {/* Filter Pills */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-1.5">
+          <button
+            onClick={() => setSelectedFilter("all")}
+            className={`rounded-lg px-3.5 py-1.5 text-xs font-medium transition-all ${
+              selectedFilter === "all"
+                ? "bg-white/10 text-white font-semibold"
+                : "text-secondary hover:text-white hover:bg-white/5"
+            }`}
+          >
+            All
+          </button>
+          {CATEGORY_KEYS.map((key) => {
+            const cat = skillsData[key];
+            return (
+              <button
+                key={key}
+                onClick={() => setSelectedFilter(key)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                  selectedFilter === key
+                    ? "bg-white/10 text-white font-semibold"
+                    : "text-secondary hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
+        </div>
 
-        <div className="flex flex-wrap gap-8">
-          {CATEGORY_KEYS.map((key, catIdx) => {
+        {/* Category Cards Grid */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+          {displayedCategories.map((key, catIdx) => {
             const category = skillsData[key];
             const Icon = ICONS[category.icon] ?? Code;
-            // Make the last card (aiAutomation) span full width on sm+
-            const isLast = catIdx === CATEGORY_KEYS.length - 1;
+            const isFullWidth =
+              selectedFilter === "all" && catIdx === CATEGORY_KEYS.length - 1;
+
             return (
               <Reveal
                 key={key}
-                delay={catIdx * 0.08}
-                className={isLast ? "w-full" : "w-full sm:w-[calc(50%-1rem)]"}
+                delay={catIdx * 0.05}
+                className={isFullWidth ? "md:col-span-2" : ""}
               >
-                <div className="group relative rounded-2xl border border-white/8 bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-500 hover:border-white/16 hover:bg-white/[0.04]">
-                  {/* Subtle top edge glow */}
-                  <div className="pointer-events-none absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                  <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5">
-                      <Icon className="h-4 w-4 text-white/60" />
+                <div className="group h-full rounded-xl border border-white/8 bg-card p-6 transition-all duration-200 hover:border-white/18 hover:bg-[#16181f]">
+                  {/* Top Header */}
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-base font-semibold text-white">
+                          {category.label}
+                        </h3>
+                        <p className="text-[11px] text-secondary font-mono">
+                          {category.skills.length} skills
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="text-sm font-semibold tracking-wide text-white/80">
-                      {category.label}
-                    </h3>
                   </div>
 
-                  {/* Skill badges */}
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill, i) => (
-                      <motion.span
+                  {/* Skills badges */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {category.skills.map((skill) => (
+                      <span
                         key={skill.name}
-                        initial={{ opacity: 0, scale: 0.88 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.35,
-                          delay: catIdx * 0.06 + i * 0.04,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                        whileHover={{ scale: 1.06 }}
-                        className="cursor-default rounded-lg border border-white/8 bg-white/4 px-3 py-1.5 text-xs font-medium text-white/60 transition-all duration-200 hover:border-white/20 hover:bg-white/8 hover:text-white/90"
+                        className="inline-flex items-center rounded border border-white/8 bg-white/[0.03] px-2.5 py-1 text-xs text-zinc-300 transition-colors hover:border-white/20 hover:bg-white/8 hover:text-white"
                       >
                         {skill.name}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
                 </div>

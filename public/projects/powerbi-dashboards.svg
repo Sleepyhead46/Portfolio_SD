@@ -1,31 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#121212"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="450" fill="url(#bg)"/>
-  <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
-    <line x1="0" y1="75" x2="800" y2="75"/>
-    <line x1="0" y1="150" x2="800" y2="150"/>
-    <line x1="0" y1="225" x2="800" y2="225"/>
-    <line x1="0" y1="300" x2="800" y2="300"/>
-    <line x1="0" y1="375" x2="800" y2="375"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0d0e12"/>
+
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
   </g>
-  <!-- Bar chart silhouette -->
-  <rect x="210" y="310" width="42" height="90" rx="4" fill="rgba(255,255,255,0.12)"/>
-  <rect x="268" y="260" width="42" height="140" rx="4" fill="rgba(255,255,255,0.18)"/>
-  <rect x="326" y="220" width="42" height="180" rx="4" fill="rgba(255,255,255,0.25)"/>
-  <rect x="384" y="250" width="42" height="150" rx="4" fill="rgba(255,255,255,0.18)"/>
-  <rect x="442" y="200" width="42" height="200" rx="4" fill="rgba(255,255,255,0.30)"/>
-  <rect x="500" y="175" width="42" height="225" rx="4" fill="rgba(255,255,255,0.22)"/>
-  <!-- Trend line -->
-  <polyline points="231,310 289,260 347,220 405,250 463,200 521,175"
-    fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Center text -->
-  <circle cx="400" cy="190" r="80" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1.5"/>
-  <circle cx="400" cy="190" r="52" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-  <text x="400" y="184" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">POWER BI</text>
-  <text x="400" y="204" font-family="Arial, sans-serif" font-size="12" letter-spacing="3" fill="#a0a0a0" text-anchor="middle">DASHBOARDS</text>
+
+  <!-- Left: BI Visual Representation -->
+  <g transform="translate(100, 90)">
+    <rect x="0" y="0" width="220" height="260" rx="12" fill="#15171d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <g transform="translate(20, 20)">
+      <rect x="0" y="16" width="8" height="24" rx="1.5" fill="#52525b"/>
+      <rect x="12" y="8" width="8" height="32" rx="1.5" fill="#a1a1aa"/>
+      <rect x="24" y="0" width="8" height="40" rx="1.5" fill="#e4e4e7"/>
+      <text x="42" y="24" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Power BI Suite</text>
+      <text x="42" y="38" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Executive Dashboards</text>
+    </g>
+
+    <!-- Donut Chart -->
+    <g transform="translate(110, 140)">
+      <circle cx="0" cy="0" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+      <circle cx="0" cy="0" r="42" fill="none" stroke="#d4d4d8" stroke-width="12" stroke-dasharray="140 300" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="42" fill="none" stroke="#71717a" stroke-width="12" stroke-dasharray="70 300" stroke-dashoffset="-150" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="42" fill="none" stroke="#3f3f46" stroke-width="12" stroke-dasharray="50 300" stroke-dashoffset="-230" stroke-linecap="round"/>
+      <text x="0" y="4" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">KPIs</text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(20, 215)">
+      <circle cx="8" cy="8" r="3.5" fill="#d4d4d8"/>
+      <text x="18" y="12" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Mobile Sales</text>
+
+      <circle cx="105" cy="8" r="3.5" fill="#71717a"/>
+      <text x="115" y="12" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Credit Card</text>
+    </g>
+  </g>
+
+  <!-- Right: Capabilities -->
+  <g transform="translate(350, 85)">
+    <rect x="0" y="0" width="360" height="280" rx="12" fill="#15171d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <text x="24" y="36" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Business Intelligence &amp; Analytics</text>
+    <text x="24" y="54" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="11">Data Modeling · Power Query ETL · Interactive DAX</text>
+
+    <!-- Showcase subcards -->
+    <g transform="translate(24, 75)">
+      <rect x="0" y="0" width="310" height="68" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="14" y="22" fill="#e4e4e7" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Mobile Phone Sales Dashboard</text>
+      <text x="14" y="38" fill="#a1a1aa" font-family="system-ui, sans-serif" font-size="10">Regional breakdown, unit pricing, time-series revenue trends.</text>
+      <text x="14" y="54" fill="#71717a" font-family="system-ui, sans-serif" font-size="9">DAX Measures · Star Schema · Regional Slicers</text>
+
+      <rect x="0" y="78" width="310" height="68" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="14" y="100" fill="#e4e4e7" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Credit Card Analysis Dashboard</text>
+      <text x="14" y="116" fill="#a1a1aa" font-family="system-ui, sans-serif" font-size="10">Transaction delinquency, spend volume, customer segment KPIs.</text>
+      <text x="14" y="132" fill="#71717a" font-family="system-ui, sans-serif" font-size="9">Financial Analytics · ETL Pipeline · Risk Modeling</text>
+    </g>
+
+    <text x="24" y="250" fill="#64748b" font-family="system-ui, sans-serif" font-size="10 font-mono">Power BI Desktop · DAX · Power Query · Excel · SQL</text>
+  </g>
 </svg>

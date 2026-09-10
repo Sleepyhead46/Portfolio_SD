@@ -96,9 +96,9 @@ components/
 └── shared/
 ```
 
-## Contact Form Setup
+## Contact Form & Supabase Setup
 
-This project uses Supabase to store messages submitted through the contact form.
+This project uses Supabase to securely store messages submitted through the contact form.
 
 Create a `.env.local` file:
 
@@ -107,12 +107,33 @@ NEXT_PUBLIC_SUPABASE_URL=your-project-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-After creating your Supabase project:
+1. Copy the project URL and API key from Supabase (`Settings -> API`).
+2. Add values to `.env.local` (or GitHub repository secrets for production).
+3. Run the SQL statements inside `supabase/schema.sql` in your Supabase SQL Editor.
 
-1. Copy the project URL.
-2. Copy the API key.
-3. Add the values to `.env.local`.
-4. Run the SQL file inside `supabase/schema.sql`.
+## Supabase Keep-Alive & Health-Check System
+
+Free-tier Supabase projects automatically pause after 7 days of inactivity. To prevent downtime without exposing credentials in client-side code:
+
+1. **Scheduled GitHub Actions Workflow** (`.github/workflows/supabase-keepalive.yml`):
+   - Automatically runs twice weekly (Monday and Thursday at 04:00 UTC) and supports manual triggers (`workflow_dispatch`).
+   - In your GitHub repository, go to **Settings** → **Secrets and variables** → **Actions** and add:
+     - `SUPABASE_URL`: Your project URL (e.g. `https://xxx.supabase.co`)
+     - `SUPABASE_ANON_KEY`: Your Supabase anon or publishable key
+   - Executes `node scripts/supabase-keepalive.mjs` server-side to ping the database and keep it warm.
+
+2. **Server Health Endpoint** (`/api/health`):
+   - Returns live Supabase connectivity status and latency:
+     ```json
+     {
+       "status": "healthy",
+       "database": "connected",
+       "messageCount": 0,
+       "latencyMs": 142,
+       "timestamp": "2026-09-10T06:30:00.000Z"
+     }
+     ```
+   - Can be connected to free monitoring services (e.g., BetterStack, UptimeRobot).
 
 ## Deployment
 

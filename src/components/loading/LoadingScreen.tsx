@@ -1,87 +1,69 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(true);
-  const [done, setDone] = useState(false);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("sd_loaded")) {
+      setVisible(false);
+      onComplete();
+      return;
+    }
+
     let current = 0;
     const interval = setInterval(() => {
-      current += Math.random() * 18 + 6;
+      current += Math.random() * 25 + 15;
       if (current >= 100) {
         current = 100;
         clearInterval(interval);
-        setDone(true);
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("sd_loaded", "1");
+        }
         setTimeout(() => {
           setVisible(false);
           onComplete();
-        }, 600);
+        }, 200);
       }
-      setProgress(Math.floor(current));
-    }, 160);
+      setProgress(Math.min(100, Math.floor(current)));
+    }, 60);
+
     return () => clearInterval(interval);
   }, [onComplete]);
+
+  if (!visible) return null;
 
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-black"
-          exit={{ y: "-100%", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }}
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#0a0a0c]"
+          initial={{ opacity: 1 }}
+          exit={{
+            opacity: 0,
+            transition: { duration: 0.35, ease: "easeInOut" },
+          }}
         >
-          {/* Noise overlay */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage:
-                "url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E)",
-            }}
-          />
+          {/* Minimal SD initials box */}
+          <div className="relative mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-white/15 bg-white/5">
+            <span className="font-display text-lg font-bold text-white">SD</span>
+          </div>
 
-          {/* SD Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mb-12 flex h-28 w-28 items-center justify-center"
-          >
-            <motion.div
-              className="absolute inset-0 rounded-2xl border border-white/20"
-              animate={{
-                rotate: 360,
-                borderColor: ["rgba(255,255,255,0.2)", "rgba(255,255,255,0.6)", "rgba(255,255,255,0.2)"],
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.span
-              className="font-display text-4xl font-bold tracking-tight text-white"
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              SD
-            </motion.span>
-          </motion.div>
-
-          {/* Progress line */}
-          <div className="h-px w-56 overflow-hidden bg-white/10">
+          {/* Thin progress line */}
+          <div className="h-0.5 w-40 overflow-hidden rounded-full bg-white/10">
             <motion.div
               className="h-full bg-white"
               animate={{ width: `${progress}%` }}
-              transition={{ ease: "easeOut", duration: 0.15 }}
+              transition={{ ease: "easeOut", duration: 0.1 }}
             />
           </div>
 
-          <motion.p
-            className="mt-6 font-mono text-xs tracking-[0.3em] text-secondary"
-            animate={{ opacity: done ? 0 : 1 }}
-          >
+          <div className="mt-3 font-mono text-[11px] tracking-wider text-secondary">
             {progress}%
-          </motion.p>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

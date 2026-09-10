@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Mail, Phone } from "lucide-react";
+import { ArrowRight, Download, Mail, Phone, MapPin } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { ParticleField } from "@/components/particles/ParticleField";
 import { GridPattern } from "@/components/shared/GridPattern";
@@ -14,9 +14,10 @@ const Hero3D = dynamic(() => import("./Hero3D").then((m) => m.Hero3D), {
 });
 
 const ROLES = [
-  "DATA SCIENTIST",
-  "MACHINE LEARNING ENGINEER",
-  "DATA ANALYST",
+  "Data Scientist",
+  "Machine Learning Engineer",
+  "Data Analyst",
+  "AI Systems Developer",
 ];
 
 const SOCIALS = [
@@ -37,7 +38,10 @@ function Lik({ className }: { className?: string }) {
   );
 }
 
-const counter = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
+const itemAnim = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+};
 
 export function Hero() {
   const typed = useTypewriter(ROLES);
@@ -49,83 +53,83 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-screen items-center justify-center"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 pt-24 pb-16 sm:px-6 lg:px-8"
     >
-      {/* Background layers */}
-      <div className="absolute inset-0 bg-gradient-radial opacity-60" />
+      {/* Clean subtle grid background */}
       <GridPattern />
-      <ParticleField count={60} />
-      <div className="pointer-events-none absolute inset-0">
+      <ParticleField count={30} />
+      
+      {/* 3D Wireframe Scene */}
+      <div className="pointer-events-none absolute inset-0 opacity-40">
         <Hero3D />
       </div>
 
-      {/* Mouse glow */}
-      <div className="pointer-events-none absolute inset-0 hidden md:block">
-        <motion.div
-          className="absolute h-[500px] w-[500px] rounded-full bg-white/[0.03] blur-3xl"
-          animate={{ x: ["-20%", "20%", "-20%"], y: ["-10%", "10%", "-10%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-20 text-center lg:px-8">
+      {/* Hero Content */}
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
         <motion.div
           initial="hidden"
           animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: 2.2 } } }}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+            },
+          }}
           className="space-y-6"
         >
-          <motion.div
-            variants={counter}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-secondary backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-            </span>
-            Available for opportunities
+          {/* Top Status Badges */}
+          <motion.div variants={itemAnim} className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1 text-xs font-medium text-zinc-300 backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              Available for Opportunities
+            </div>
+
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-400 backdrop-blur-sm">
+              <MapPin className="h-3 w-3 text-zinc-400" />
+              <span>Kathmandu, Nepal</span>
+            </div>
           </motion.div>
 
-          <motion.h1
-            variants={counter}
-            className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl"
-          >
-            SAMYAK
-            <br />
-            <span className="bg-gradient-to-b from-white to-highlight bg-clip-text text-transparent">
-              DESHAR
-            </span>
-          </motion.h1>
-
-          <motion.div
-            variants={counter}
-            className="flex items-center justify-center gap-3 font-mono text-lg text-secondary sm:text-2xl"
-          >
-<span className="text-white/40">{"\u003E"}</span>
-            <span className="h-8 text-accent sm:h-10">{typed}</span>
-            <span className="h-8 w-[2px] animate-pulse bg-white sm:h-10" />
+          {/* Name Heading */}
+          <motion.div variants={itemAnim} className="space-y-2">
+            <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+              Samyak Deshar
+            </h1>
           </motion.div>
 
+          {/* Typewriter Role */}
+          <motion.div
+            variants={itemAnim}
+            className="mx-auto flex min-h-[2.5rem] items-center justify-center gap-2 font-mono text-base text-zinc-300 sm:text-xl md:text-2xl"
+          >
+            <span className="text-zinc-500">{"\u003E"}</span>
+            <span className="text-white font-medium">{typed}</span>
+            <span className="inline-block h-5 w-0.5 animate-pulse bg-white/70" />
+          </motion.div>
+
+          {/* Subtitle / Bio */}
           <motion.p
-            variants={counter}
-            className="mx-auto max-w-2xl text-base leading-relaxed text-secondary sm:text-lg"
+            variants={itemAnim}
+            className="mx-auto max-w-2xl text-sm leading-relaxed text-secondary sm:text-base md:text-lg"
           >
-            Transforming data into intelligent solutions through analytics,
-            machine learning, and automation.
+            Turning complex data into predictive intelligence, production-ready machine
+            learning pipelines, and executive dashboards. Focused on Python, TensorFlow,
+            Power BI, and practical AI systems.
           </motion.p>
 
+          {/* Action CTAs: Solid White Primary, Outline Secondary */}
           <motion.div
-            variants={counter}
-            className="flex flex-wrap items-center justify-center gap-4 pt-4"
+            variants={itemAnim}
+            className="flex flex-wrap items-center justify-center gap-3 pt-2"
           >
             <MagneticButton>
               <button
                 onClick={() => scrollTo("projects")}
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-elevated px-7 text-sm font-medium text-white ring-1 ring-white/15 transition-all duration-300 hover:ring-white/40 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+                className="group inline-flex h-11 items-center gap-2 rounded-lg bg-white px-6 text-xs sm:text-sm font-semibold text-black transition-all hover:bg-zinc-200 active:scale-95 shadow-subtle"
               >
-                View Projects
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <span>View Projects</span>
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
             </MagneticButton>
 
@@ -133,28 +137,28 @@ export function Hero() {
               <a
                 href="/samyakdeshar.pdf"
                 download="Samyak-Deshar-Resume.pdf"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/15 px-7 text-sm font-medium text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="inline-flex h-11 items-center gap-2 rounded-lg border border-white/15 bg-white/[0.02] px-5 text-xs sm:text-sm font-medium text-white transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95"
               >
-                <Download className="h-4 w-4" />
-                Download Resume
+                <Download className="h-4 w-4 text-zinc-400" />
+                <span>Download Resume</span>
               </a>
             </MagneticButton>
 
             <MagneticButton>
               <button
                 onClick={() => scrollTo("contact")}
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/15 px-7 text-sm font-medium text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="inline-flex h-11 items-center gap-2 rounded-lg border border-white/15 bg-white/[0.02] px-5 text-xs sm:text-sm font-medium text-white transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95"
               >
-                <Mail className="h-4 w-4" />
-                Contact Me
+                <Mail className="h-4 w-4 text-zinc-400" />
+                <span>Contact Me</span>
               </button>
             </MagneticButton>
           </motion.div>
 
-          {/* Socials */}
+          {/* Social Icons */}
           <motion.div
-            variants={counter}
-            className="flex items-center justify-center gap-3 pt-6"
+            variants={itemAnim}
+            className="flex items-center justify-center gap-2.5 pt-3"
           >
             {SOCIALS.map((s) => (
               <a
@@ -163,16 +167,14 @@ export function Hero() {
                 target={s.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
                 aria-label={s.label}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-secondary transition-all duration-300 hover:border-white/30 hover:text-white hover:bg-white/10"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.02] text-zinc-400 transition-all duration-200 hover:border-white/25 hover:text-white hover:bg-white/5"
               >
-                <s.icon className="h-5 w-5" />
+                <s.icon className="h-4 w-4" />
               </a>
             ))}
           </motion.div>
         </motion.div>
       </div>
-
-
     </section>
   );
 }

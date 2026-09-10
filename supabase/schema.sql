@@ -29,3 +29,18 @@ create policy "Allow authenticated select contact_messages"
   to authenticated
   using (true);
 
+-- Optional: Dedicated keep-alive ping table for health checks
+create table if not exists public.keepalive_pings (
+  id serial primary key,
+  pinged_at timestamptz not null default now(),
+  source text default 'cron'
+);
+
+alter table public.keepalive_pings enable row level security;
+
+create policy "Allow read keepalive_pings"
+  on public.keepalive_pings
+  for select
+  to anon, authenticated
+  using (true);
+

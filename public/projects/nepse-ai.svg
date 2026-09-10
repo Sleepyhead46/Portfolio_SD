@@ -1,21 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#121212"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="450" fill="url(#bg)"/>
-  <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
-    <line x1="0" y1="75" x2="800" y2="75"/>
-    <line x1="0" y1="150" x2="800" y2="150"/>
-    <line x1="0" y1="225" x2="800" y2="225"/>
-    <line x1="0" y1="300" x2="800" y2="300"/>
-    <line x1="0" y1="375" x2="800" y2="375"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0c0e12"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
   </g>
-  <polyline points="250,300 330,240 410,270 490,170 560,210" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="400" cy="225" r="90" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-  <circle cx="400" cy="225" r="60" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-  <text x="400" y="220" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">NEPSE AI</text>
-  <text x="400" y="248" font-family="Arial, sans-serif" font-size="16" letter-spacing="2" fill="#a0a0a0" text-anchor="middle">FINANCE AGENT</text>
+
+  <!-- Left: Stock Chart with Candlesticks -->
+  <g transform="translate(110, 95)">
+    <rect x="0" y="0" width="220" height="255" rx="12" fill="#14171d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <!-- Ticker header -->
+    <text x="18" y="32" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="13" font-weight="700">NEPSE INDEX</text>
+    <text x="18" y="52" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="18" font-weight="700">2,784.50</text>
+    <text x="110" y="52" fill="#34d399" font-family="system-ui, sans-serif" font-size="12">+48.2 (1.76%)</text>
+
+    <!-- Candlesticks -->
+    <g transform="translate(20, 70)">
+      <line x1="15" y1="40" x2="15" y2="90" stroke="#71717a" stroke-width="1.5"/>
+      <rect x="10" y="50" width="10" height="30" rx="1.5" fill="#52525b"/>
+
+      <line x1="45" y1="30" x2="45" y2="80" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="40" y="35" width="10" height="35" rx="1.5" fill="#34d399"/>
+
+      <line x1="75" y1="20" x2="75" y2="75" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="70" y="25" width="10" height="40" rx="1.5" fill="#34d399"/>
+
+      <line x1="105" y1="35" x2="105" y2="95" stroke="#71717a" stroke-width="1.5"/>
+      <rect x="100" y="45" width="10" height="35" rx="1.5" fill="#52525b"/>
+
+      <line x1="135" y1="10" x2="135" y2="70" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="130" y="15" width="10" height="45" rx="1.5" fill="#34d399"/>
+
+      <line x1="165" y1="5" x2="165" y2="55" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="160" y="8" width="10" height="38" rx="1.5" fill="#34d399"/>
+    </g>
+
+    <rect x="18" y="200" width="184" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="32" y="221" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="11" font-weight="500">Multi-Agent Financial Architecture</text>
+  </g>
+
+  <!-- Right: Orchestration Panel -->
+  <g transform="translate(360, 85)">
+    <rect x="0" y="0" width="350" height="280" rx="12" fill="#14171d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <text x="24" y="36" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">NEPSE AI Financial Intelligence</text>
+    <text x="24" y="54" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="11">Real-Time Stock Analysis &amp; Sector Telemetry</text>
+
+    <!-- KPI Row -->
+    <g transform="translate(24, 70)">
+      <rect x="0" y="0" width="92" height="48" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="10" y="18" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Coverage</text>
+      <text x="10" y="38" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">300+ Stocks</text>
+
+      <rect x="102" y="0" width="92" height="48" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="112" y="18" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Sectors</text>
+      <text x="112" y="38" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">14 Groups</text>
+
+      <rect x="204" y="0" width="98" height="48" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="214" y="18" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Latency</text>
+      <text x="214" y="38" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">&lt; 1 sec</text>
+    </g>
+
+    <g transform="translate(24, 136)">
+      <rect x="0" y="0" width="302" height="28" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="12" y="18" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="11">Market Analyst Agent: Top Gainers &amp; Sector Flows</text>
+
+      <rect x="0" y="36" width="302" height="28" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="12" y="54" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="11">Fundamentals Agent: EPS, P/E, Dividend Yield &amp; RSI</text>
+
+      <rect x="0" y="72" width="302" height="28" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="12" y="90" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="11">News Sentinel: Groq LLM + SerpAPI Real-Time Feeds</text>
+    </g>
+
+    <text x="24" y="255" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">Phi Agent Framework · Groq · Streamlit · NepalIPaisa API</text>
+  </g>
 </svg>

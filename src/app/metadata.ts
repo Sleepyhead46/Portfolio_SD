@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: `${fullName} | Portfolio`,
+    default: fullName,
     template: `%s | ${fullName}`,
   },
 
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: fullName,
-    title: `${fullName} | Portfolio`,
+    title: fullName,
     description,
     images: [
       {
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: `${fullName} | Portfolio`,
+    title: fullName,
     description,
     images: [
       {
