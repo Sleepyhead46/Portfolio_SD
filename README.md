@@ -34,7 +34,7 @@ The website showcases my projects, technical skills, education, and experience i
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Sleepyhead46/Portfolio_SD.git
 ```
 
 Install dependencies:
