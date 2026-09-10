@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0c0e12"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
+  </g>
+
+  <!-- Left: 3D Scene Viewport with Floating Physics Spheres & Orbit -->
+  <g transform="translate(100, 85)">
+    <rect x="0" y="0" width="240" height="280" rx="12" fill="#14171d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <!-- Viewport Header -->
+    <text x="18" y="30" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10" font-weight="600">CANVAS / THREE.JS SCENE</text>
+    <text x="18" y="50" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">3D Interactive Character</text>
+
+    <!-- 3D Grid & Orbit Rings -->
+    <g transform="translate(120, 155)">
+      <!-- Ground plane ellipse -->
+      <ellipse cx="0" cy="50" rx="90" ry="24" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" stroke-width="1"/>
+      <ellipse cx="0" cy="50" rx="60" ry="16" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+      <!-- Orbit rings -->
+      <circle cx="0" cy="0" r="65" fill="none" stroke="rgba(99,102,241,0.25)" stroke-width="1.5" stroke-dasharray="6 3"/>
+      <circle cx="0" cy="0" r="42" fill="none" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+
+      <!-- Character Wireframe / Glow Core -->
+      <circle cx="0" cy="-10" r="22" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.5"/>
+      <circle cx="0" cy="-10" r="14" fill="#312e81"/>
+      <circle cx="0" cy="-10" r="6" fill="#a5b4fc"/>
+
+      <!-- Floating Rapier Physics Spheres -->
+      <g transform="translate(-48, -25)">
+        <circle cx="0" cy="0" r="13" fill="#18181b" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="-7" y="4" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10" font-weight="700">⚛</text>
+      </g>
+      <g transform="translate(46, -30)">
+        <circle cx="0" cy="0" r="14" fill="#18181b" stroke="#a855f7" stroke-width="1.5"/>
+        <text x="-6" y="4" fill="#a855f7" font-family="system-ui, sans-serif" font-size="9" font-weight="700">3D</text>
+      </g>
+      <g transform="translate(35, 26)">
+        <circle cx="0" cy="0" r="12" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+        <text x="-7" y="4" fill="#34d399" font-family="system-ui, sans-serif" font-size="9" font-weight="700">R</text>
+      </g>
+      <g transform="translate(-38, 28)">
+        <circle cx="0" cy="0" r="11" fill="#18181b" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="-6" y="4" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="8" font-weight="700">JS</text>
+      </g>
+    </g>
+
+    <!-- Viewport footer badge -->
+    <rect x="18" y="235" width="204" height="28" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="32" y="253" fill="#c7d2fe" font-family="system-ui, sans-serif" font-size="10" font-weight="500">60 FPS · Rapier Physics Engine</text>
+  </g>
+
+  <!-- Right: Architecture & Experience Panel -->
+  <g transform="translate(365, 85)">
+    <rect x="0" y="0" width="345" height="280" rx="12" fill="#14171d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <text x="24" y="34" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Interactive 3D Portfolio Platform</text>
+    <text x="24" y="52" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="11">R3F · Rapier Physics · GSAP ScrollTrigger</text>
+
+    <!-- KPI Row -->
+    <g transform="translate(24, 68)">
+      <rect x="0" y="0" width="90" height="48" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="10" y="18" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Rendering</text>
+      <text x="10" y="38" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Three.js</text>
+
+      <rect x="100" y="0" width="90" height="48" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="110" y="18" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Physics</text>
+      <text x="110" y="38" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Rapier</text>
+
+      <rect x="200" y="0" width="97" height="48" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="210" y="18" fill="#8b92a0" font-family="system-ui, sans-serif" font-size="10">Animation</text>
+      <text x="210" y="38" fill="#f4f4f6" font-family="system-ui, sans-serif" font-size="14" font-weight="700">GSAP</text>
+    </g>
+
+    <!-- Feature rows -->
+    <g transform="translate(24, 134)">
+      <rect x="0" y="0" width="297" height="28" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="12" y="18" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="11">3D Character Scene: Custom HDR Lighting &amp; Rigging</text>
+
+      <rect x="0" y="36" width="297" height="28" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="12" y="54" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="11">Interactive Ball Pit: Rigid Body Collisions &amp; Impulse</text>
+
+      <rect x="0" y="72" width="297" height="28" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+      <text x="12" y="90" fill="#d1d5db" font-family="system-ui, sans-serif" font-size="11">GSAP ScrollTrigger: Horizontal Carousel &amp; Section Reveals</text>
+    </g>
+
+    <text x="24" y="255" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">React 18 · Vite 5 · Three.js · Rapier · N8AO · Vercel Analytics</text>
+  </g>
+</svg>

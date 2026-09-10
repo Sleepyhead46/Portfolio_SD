@@ -100,5 +100,26 @@
         "github": "https://github.com/Sleepyhead46/Credit-Card-Power-Bi-analysis.git"
       }
     ]
+  },
+  {
+    "id": "portfolio",
+    "title": "Portfolio",
+    "tagline": "Immersive 3D Experience with React, Three.js & Physics",
+    "description": "An immersive, interactive 3D portfolio built with React, Three.js, and GSAP — featuring physics-based animations, a 3D character model, and smooth scroll-driven experiences.",
+    "category": "creative-3d",
+    "categoryLabel": "3D & Creative Web",
+    "image": "/projects/portfolio-3d.svg",
+    "tech": ["React 18", "Three.js", "React Three Fiber", "Rapier Physics", "GSAP", "Vite"],
+    "github": "https://github.com/Sleepyhead46/portfolio.git",
+    "demo": "https://github.com/Sleepyhead46/portfolio",
+    "features": [
+      "3D character model with custom HDR lighting",
+      "Physics-based tech ball pit with Rapier",
+      "Scroll-driven animations & GSAP carousel",
+      "Custom responsive cursor interaction",
+      "Marquee skill ticker and sound fx",
+      "Built-in Vercel analytics"
+    ],
+    "featured": true
   }
 ]

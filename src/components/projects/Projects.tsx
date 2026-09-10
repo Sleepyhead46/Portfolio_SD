@@ -47,6 +47,7 @@ const projects = rawProjects as Project[];
 
 const CATEGORIES = [
   { id: "all", label: "All Projects" },
+  { id: "creative-3d", label: "3D & Interactive Web" },
   { id: "machine-learning", label: "Machine Learning & AI" },
   { id: "ai-agents", label: "AI Agents" },
   { id: "business-intelligence", label: "Power BI & Analytics" },
